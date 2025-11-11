@@ -9,10 +9,12 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", { email, password });
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
       localStorage.setItem("token", res.data.token);
 
       const user = getUserFromToken();
