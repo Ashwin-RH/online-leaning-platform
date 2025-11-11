@@ -7,10 +7,14 @@ export default function Courses() {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/courses")
-      .then(res => setCourses(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  const token = localStorage.getItem("token");
+  axios.get("http://localhost:5000/courses", {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  .then(res => setCourses(res.data))
+  .catch(err => console.error(err));
+}, []);
+
 
    const filtered = courses.filter(c =>
     c.title.toLowerCase().includes(filter.toLowerCase()) ||

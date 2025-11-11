@@ -1,13 +1,54 @@
 import { Link } from "react-router-dom";
+import { getUserFromToken, isAuthenticated } from "../utils/auth";
 
 export default function Home() {
+  const user = isAuthenticated() ? getUserFromToken() : null;
+
+  if (user?.role === "student") {
+    return (
+      <div className="mt-24 text-center text-gray-100 scrollbar-hide">
+        <section className="py-20 max-w-4xl mx-auto bg-gray-900/40 rounded-2xl border border-gray-700 shadow-lg">
+          <h1 className="text-4xl bg-gradient-to-r from-gray-950 via-gray-500 to-gray-400 bg-clip-text text-transparent  jura-semibold mb-4">
+            Welcome back, <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent"> {user?.name ? user.name.split(" ")[0] : "Student"}</span>  
+          </h1>
+          <p className="text-gray-400 jura-regular mb-6">
+            Explore your courses, track your progress, and continue learning new skills.
+          </p>
+          <Link
+            to="/courses"
+            className="bg-gradient-to-r from-orange-600 to-amber-600  jura-bold px-6 py-3 rounded-lg hover:bg-amber-700 transition"
+          >
+            Go to My Courses
+          </Link>
+        </section>
+  
+
+        {/* Optional: Quick stats */}
+        {/* <section className="mt-12 grid md:grid-cols-3 gap-6 mx-4 max-w-5xl mx-auto">
+          <div className="bg-gray-900/60 p-6 rounded-xl border border-gray-700 shadow-lg">
+            <h3 className="text-xl jura-semibold text-amber-500 mb-2">Courses Enrolled</h3>
+            <p className="text-gray-300 jura-regular text-lg">5</p>
+          </div>
+          <div className="bg-gray-900/60 p-6 rounded-xl border border-gray-700 shadow-lg">
+            <h3 className="text-xl jura-semibold text-amber-500 mb-2">Quizzes Completed</h3>
+            <p className="text-gray-300 jura-regular text-lg">12</p>
+          </div>
+          <div className="bg-gray-900/60 p-6 rounded-xl border border-gray-700 shadow-lg">
+            <h3 className="text-xl jura-semibold text-amber-500 mb-2">Progress</h3>
+            <p className="text-gray-300 jura-regular text-lg">76%</p>
+          </div>
+        </section> */}
+      </div>
+    );
+  }
+
   return (
     <div className="mt-24 text-center text-gray-100 scrollbar-hide">
       {/* 🌌 Hero Section */}
       <section className="relative py-20 border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-950 hover:shadow-2xl hover:shadow-gray-800/50 mx-4 rounded-2xl duration-1000 overflow-hidden">
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <h1 className="text-5xl text-amber-600/90 jura-semibold mb-6 leading-tight">
-            Master New Skills with <span className="jura-bold px-4 py-1 rounded-lg z-20 bg-gradient-to-tl from-orange-400 via-orange-600 to-red-500 text-transparent bg-clip-text">LEARNIFY</span>
+            Master New Skills with <span className="jura-bold px-4 py-1 rounded-lg z-20 bg-gradient-to-tl from-orange-400 via-orange-600 to-red-500 text-transparent bg-clip-text">Tatwa</span>
           </h1>
           <p className="text-gray-300 jura-regular text-lg mb-8">
             Build your future with expert-led courses, hands-on projects, and real progress tracking — 

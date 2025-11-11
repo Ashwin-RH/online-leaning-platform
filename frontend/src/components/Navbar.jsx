@@ -17,12 +17,12 @@ export default function Navbar() {
     <nav
       className="fixed top-3 left-1/2 -translate-x-1/2 z-50 
                  w-[96%] max-w-7xl px-6 py-3 flex justify-between items-center 
-                 bg-gray-900/40 border border-gray-700/50 backdrop-blur-lg rounded-xl 
+                 bg-gray-900/40 border border-gray-700/50 backdrop-blur-sm rounded-xl 
                  shadow-xl shadow-blue-500/10 scrollbar-hide"
     >
       {/* ✅ Logo */}
       <h1 className="text-2xl jura-bold bg-gradient-to-tr from-purple-500 via-orange-500 to-amber-600 text-transparent bg-clip-text">
-        LEARNIFY
+        Tatwa
       </h1>
 
       {/* ✅ Nav Links */}

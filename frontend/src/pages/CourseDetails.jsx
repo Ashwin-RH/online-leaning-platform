@@ -72,8 +72,8 @@ export default function CourseDetails() {
     <div className="max-w-4xl mx-auto bg-gray-900/40 shadow-lg shadow-black/20 p-6 rounded-2xl my-10 border border-gray-700 mt-25">
       <h2 className="text-2xl text-gray-400 jura-bold mb-2">{course.title}</h2>
       <p className="text-gray-500 jura-regular mb-4">{course.description}</p>
-      <p className="text-sm text-gray-400/70 jura-regular mb-6">
-        Instructor: {course.instructor?.name || "Unknown"}
+      <p className="text-sm text-green-400/70 jura-semibold mb-6">
+        Instructor: <span className="text-gray-300">{course.instructor?.name || "Unknown"}</span>
       </p>
 
       {!enrolled ? (
@@ -88,9 +88,10 @@ export default function CourseDetails() {
           {/* ✅ Progress Bar */}
           <div className="w-full bg-gray-200 rounded-xl h-2 mb-4">
             <div
-              className="bg-green-500 h-2 rounded-xl transition-all"
-              style={{ width: `${progress}%` }}
-            ></div>
+  className="bg-green-500 h-2 rounded-xl transition-all duration-700 ease-in-out"
+  style={{ width: `${progress}%` }}
+></div>
+
           </div>
           <p className="text-sm jura-semibold text-gray-400/70 mb-4">
             Course Progress: {progress.toFixed(0)}%
@@ -103,7 +104,7 @@ export default function CourseDetails() {
               src={currentVideo}
               title="Course video"
               allowFullScreen
-              className="w-full h-64 rounded"
+              className="w-115 translate-x-50 h-64 rounded-lg"
             ></iframe>
           </div>
 
@@ -134,7 +135,7 @@ export default function CourseDetails() {
 
           <Link
             to={`/quiz/${course._id}`}
-            className="inline-block jura-bold border border-green-600 text-green-400 px-4 py-2 rounded-lg hover:rounded-xl hover:bg-green-900/20"
+            className="inline-block jura-bold border border-green-600 bg-green-800/15 text-green-400 px-4 py-2 rounded-lg hover:rounded-xl hover:bg-green-900/20"
           >
             Take Quiz
           </Link>

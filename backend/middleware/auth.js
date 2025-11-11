@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken";
+import { jwtDecode } from "jwt-decode";
+
 
 // ✅ Middleware to verify any logged-in user
 export const verifyToken = (req, res, next) => {
@@ -29,3 +31,15 @@ export const verifyInstructor = (req, res, next) => {
   }
   next();
 };
+
+export const getUserFromToken = () => {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+  try {
+    return jwtDecode(token); // returns { id, role, name }
+  } catch (err) {
+    return null;
+  }
+};
+
+export const isAuthenticated = () => !!localStorage.getItem("token");

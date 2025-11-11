@@ -192,7 +192,7 @@ const handleQuizSubmit = async (courseId) => {
   }
 }}
 
-  className="bg-gray-950 shadow-2xl hover:shadow-gray-500/20 p-5 rounded-lg transition-all duration-500 border border-gray-700 mb-6"
+  className="bg-gray-950 shadow-2xl hover:shadow-gray-500/20 p-5 rounded-xl transition-all duration-500 border border-gray-700 mb-6"
 >
   <h2 className="text-lg text-gray-400 jura-semibold mb-3">Add New Course</h2>
 
@@ -219,7 +219,7 @@ const handleQuizSubmit = async (courseId) => {
     accept="video/*"
     className="w-full mb-3 p-2 text-sm jura-regular text-gray-300 bg-gray-900 border border-gray-700 rounded-lg cursor-pointer 
     file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold 
-    file:bg-blue-600/60 file:text-white hover:file:bg-blue-700 transition cursor-pointer"
+    file:bg-blue-600/60 file:text-white hover:file:bg-blue-700 file:cursor-pointer transition"
   />
 
   <button
@@ -263,14 +263,14 @@ const handleQuizSubmit = async (courseId) => {
           <button
             onClick={() => handleUpdate(course._id)}
             title="Edit"
-            className="cursor-pointer hover:bg-gray-800/70 text-yellow-400/80 border border-gray-500/40 font-medium rounded-lg px-3 py-2 transition"
+            className="shadow-lg shadow-black/20 active:scale-95 bg-gray-900 cursor-pointer hover:bg-gray-800/70 text-yellow-400/80 border border-gray-500/40 font-medium rounded-lg px-3 py-2 transition"
           >
             <Pencil size={20} />
           </button>
           <button
             onClick={() => handleDelete(course._id)}
             title="Delete"
-            className="cursor-pointer hover:bg-gray-800/70 text-red-500 border border-gray-500/40 font-medium rounded-lg px-3 py-2 transition"
+            className="shadow-lg shadow-black/20 active:scale-95 bg-gray-900 cursor-pointer hover:bg-gray-800/70 text-red-500 border border-gray-500/40 font-medium rounded-lg px-3 py-2 transition"
           >
             <Trash size={20} />
           </button>
@@ -292,7 +292,7 @@ const handleQuizSubmit = async (courseId) => {
             {(quizForms[course._id] || []).map((q, i) => (
               <div
                 key={i}
-                className="mb-4 bg-gray-900/70 border border-gray-700/50 p-4 rounded-xl transition-all hover:border-blue-500/40 hover:bg-gray-900"
+                className="mb-4 bg-gray-900/70 shadow-lg shadow-black/20 border border-gray-700/50 p-4 rounded-xl transition-all hover:border-blue-500/40 hover:bg-gray-900"
               >
                 {/* Header */}
                 <div className="flex justify-between items-center mb-3">
@@ -306,7 +306,7 @@ const handleQuizSubmit = async (courseId) => {
                       );
                       setQuizForms({ ...quizForms, [course._id]: updated });
                     }}
-                    className="text-red-500 hover:text-red-600 text-xs font-medium cursor-pointer rounded-lg p-2 border border-gray-500/30 hover:border-red-600/50 transition"
+                    className="shadow-lg shadow-black/20 active:scale-95 text-red-500 hover:text-red-600 text-xs font-medium cursor-pointer rounded-lg p-2 border border-gray-500/30 hover:border-red-600/50 transition"
                   >
                     <Trash size={18} />
                   </button>
@@ -365,14 +365,14 @@ const handleQuizSubmit = async (courseId) => {
           <div className="flex justify-between mt-4">
             <button
               onClick={() => addQuestion(course._id)}
-              className="cursor-pointer text-blue-400 hover:text-blue-300 border border-blue-600/40 px-4 py-2 rounded-lg jura-medium transition"
+              className="shadow-lg shadow-black/20 active:scale-95 cursor-pointer text-blue-400 hover:text-blue-300 border border-blue-600/40 px-4 py-2 rounded-lg jura-medium transition"
             >
              Add Question
             </button>
 
             <button
               onClick={() => handleQuizSubmit(course._id)}
-              className="cursor-pointer text-green-400 hover:text-green-300 border border-green-600/40 px-4 py-2 rounded-lg jura-medium transition"
+              className="shadow-lg shadow-black/20 active:scale-95 cursor-pointer text-green-400 hover:text-green-300 border border-green-600/40 px-4 py-2 rounded-lg jura-medium transition"
             >
             Submit Quiz
             </button>
@@ -383,7 +383,7 @@ const handleQuizSubmit = async (courseId) => {
 
               </div>
               {/* 🎬 Upload Video Section */}
-<div className="mt-6 bg-gray-800/40 p-4 rounded-xl border border-gray-700/40 transition">
+<div className="bg-gray-800/40 p-4 rounded-xl backdrop-blur-sm border border-gray-700/30 shadow-lg shadow-black/20 mt-6">
   <h4 className="text-lg jura-semibold text-amber-400 mb-3 flex justify-between items-center">
     <span>Upload Course Video</span>
     {course.videos?.length > 0 && (
@@ -451,7 +451,7 @@ setTimeout(() => {
     />
     <button
       type="submit"
-      className="cursor-pointer text-blue-300 border border-blue-600/40 px-4 py-2 rounded-lg jura-medium hover:text-white hover:border-blue-400 transition"
+      className="shadow-lg shadow-black/20 active:scale-95 cursor-pointer text-blue-300 border border-blue-600/40 px-4 py-2 rounded-lg jura-medium hover:text-white hover:border-blue-400 transition"
     >
       Upload Video
     </button>
@@ -498,7 +498,7 @@ setTimeout(() => {
               )
             );
           }}
-          className="text-sm border border-gray-600 px-3 py-1 rounded-lg text-gray-400 hover:text-white hover:border-blue-400 cursor-pointer transition"
+          className="text-sm shadow-lg shadow-black/20 border border-gray-600 px-3 py-1 rounded-lg text-gray-400 hover:text-white hover:border-blue-400 cursor-pointer transition"
         >
           {course.showVideos ? "Hide" : "Show"}
         </button>
