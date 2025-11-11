@@ -16,7 +16,7 @@ export default function Home() {
           </p>
           <Link
             to="/courses"
-            className="bg-gradient-to-r from-orange-600 to-amber-600  jura-bold px-6 py-3 rounded-lg hover:bg-amber-700 transition"
+            className="will-change-transform hover:-translate-y-0.5 bg-gradient-to-r from-orange-600 to-amber-600  jura-bold px-6 py-3 rounded-lg hover:bg-amber-700 transition-all duration-300 inline-block -mt-2 text-white"
           >
             Go to My Courses
           </Link>

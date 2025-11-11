@@ -80,8 +80,8 @@ export default function QuizPage() {
   if (!questions.length) return <p>No quiz found for this course.</p>;
 
   return (
-    <div className="max-w-3xl translate-y-3/4 mx-auto bg-gray-900 border border-gray-700 shadow p-6 rounded-xl">
-      <h2 className="text-2xl jura-bold mb-4 text-blue-400">Course Quiz</h2>
+    <div className="max-w-3xl translate-y-40 mx-auto bg-gray-900 border border-gray-700 shadow p-6 rounded-xl">
+      <h2 className="text-2xl jura-bold mb-4 text-amber-500">Course Quiz</h2>
 
       {score ? (
         <div className="text-center">
