@@ -7,10 +7,12 @@ export default function Signup() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/auth/signup", form);
+      await axios.post(`${API_BASE_URL}/auth/signup`, form);
       setMessage("Signup successful! Redirecting to login...");
       setTimeout(() => navigate("/login"), 1500);
     } catch {

@@ -6,9 +6,11 @@ export default function Courses() {
   const [courses, setCourses] = useState([]);
   const [filter, setFilter] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   useEffect(() => {
   const token = localStorage.getItem("token");
-  axios.get("http://localhost:5000/courses", {
+  axios.get(`${API_BASE_URL}/courses`, {
     headers: { Authorization: `Bearer ${token}` }
   })
   .then(res => setCourses(res.data))

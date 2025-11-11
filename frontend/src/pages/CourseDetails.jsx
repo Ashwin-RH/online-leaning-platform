@@ -14,9 +14,11 @@ export default function CourseDetails() {
   const token = localStorage.getItem("token");
   const user = getUserFromToken();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
  useEffect(() => {
   axios
-    .get(`http://localhost:5000/courses/${id}`)
+    .get(`${API_BASE_URL}/courses/${id}`)
     .then((res) => {
       const videoUrl = res.data.videos[0];
       const embedUrl = videoUrl.includes("watch?v=")
@@ -33,7 +35,7 @@ export default function CourseDetails() {
   useEffect(() => {
     if (user && enrolled) {
       axios
-        .get(`http://localhost:5000/progress/${user.id}/${id}`, {
+        .get(`${API_BASE_URL}/progress/${user.id}/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setProgress(res.data.completionPercent || 0))
@@ -51,7 +53,7 @@ export default function CourseDetails() {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/progress/update",
+          `${API_BASE_URL}/progress/update`,
           {
             courseId: id,
             completedLessons: updatedLessons,

@@ -16,10 +16,12 @@ export default function QuizPage() {
   const token = localStorage.getItem("token");
   const user = getUserFromToken();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   // Fetch quiz questions
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/quiz/${courseId}`)
+      .get(`${API_BASE_URL}/quiz/${courseId}`)
       .then((res) => {
         setQuestions(res.data.questions || res.data);
         setLoading(false);
@@ -45,7 +47,7 @@ export default function QuizPage() {
     try {
       // ✅ Submit quiz answers
       const res = await axios.post(
-        "http://localhost:5000/quiz/submit",
+        `${API_BASE_URL}/quiz/submit`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -55,7 +57,7 @@ export default function QuizPage() {
       // ✅ Update progress for this course (mark quiz complete)
       try {
   await axios.post(
-    "http://localhost:5000/progress/update",
+    `${API_BASE_URL}/progress/update`,
     {
       courseId,
       completedLessons: [],

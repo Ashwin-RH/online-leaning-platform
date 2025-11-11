@@ -7,9 +7,11 @@ export default function AdminAnalytics() {
   const token = localStorage.getItem("token");
   const user = getUserFromToken();
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/stats", {
+      .get(`${API_BASE_URL}/admin/stats`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setStats(res.data))

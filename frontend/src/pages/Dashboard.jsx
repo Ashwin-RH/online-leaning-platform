@@ -12,10 +12,12 @@ export default function Dashboard() {
 
   const token = localStorage.getItem("token");
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   // Fetch all courses (instructors see all, ideally their own)
 useEffect(() => {
   axios
-    .get("http://localhost:5000/courses", {
+    .get(`${API_BASE_URL}/courses`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => setCourses(res.data))
@@ -28,12 +30,12 @@ useEffect(() => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/courses", form, {
+      await axios.post(`${API_BASE_URL}/courses`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage("✅ Course created successfully!");
       setForm({ title: "", description: "", videos: [""] });
-      const refreshed = await axios.get("http://localhost:5000/courses");
+      const refreshed = await axios.get(`${API_BASE_URL}/courses`);
       setCourses(refreshed.data);
     } catch (err) {
       setMessage("❌ Failed to create course. Check role/token.");
@@ -73,7 +75,7 @@ const handleQuizSubmit = async (courseId) => {
 
   try {
     await axios.post(
-      `http://localhost:5000/quiz/${courseId}`,
+      `${API_BASE_URL}/quiz/${courseId}`,
       { questions: quizForms[courseId] },
       { headers: { Authorization: `Bearer ${token}` } }
     );
